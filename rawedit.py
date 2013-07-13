@@ -23,7 +23,7 @@
 from mod_python import apache, util
 import sys, os, re, httplib, cgi, base64, httplib, Cookie, datetime, liboauth, random
 import xml.etree.cElementTree as ET
-from pyPgSQL import PgSQL
+import psycopg2
 
 root = "/data/project/rawedit/"
 
@@ -84,7 +84,7 @@ class session_manager:
         """ Initialise session """
         
         self._req    = req
-        self._pgconn = PgSQL.Connection(PGSQL_DBSTRING, PGSQL_DATABASE)
+        self._pgconn = psycopg2.connect(PGSQL_DBSTRING, PGSQL_DATABASE)
         self._pgcurs = self._pgconn.cursor()
         self._sessid = self._getsessionid(req.uri.split("/")[1]=="logout")
         

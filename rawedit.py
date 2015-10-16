@@ -25,7 +25,7 @@ import sys, os, re, httplib, cgi, base64, httplib, Cookie, datetime, liboauth, r
 import xml.etree.cElementTree as ET
 import psycopg2
 
-root = "/data/project/rawedit/"
+root = sys.path.append(os.path.dirname(__file__))
 
 OAUTH_SERVER      = 'www.openstreetmap.org'
 CONSUMER_KEY      = 'xxx'
